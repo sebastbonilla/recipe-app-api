@@ -1,0 +1,11 @@
+language: python
+python:
+    - "3.6" # version is not the same as our project (3.7) but we'll be using the container to run the test suite
+
+services:
+    - docker
+
+before_script: pip install docker-compose
+
+script:
+    - docker-compose run app sh -c "python manage.py test && flake8"
